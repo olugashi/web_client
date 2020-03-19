@@ -9,12 +9,34 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 
-const Login = () => {
+const Register = () => {
   return (
-    <Dialog open={true}>
-      <DialogTitle> Sign In</DialogTitle>
+    <Dialog open={true} maxWidth="xs">
+      <DialogTitle> Sign Up</DialogTitle>
       <DialogContent>
         <Grid container spacing={2}>
+          <Grid item xs={12} className="form-group">
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              id="FirstName"
+              label="First Name"
+              name="FirstName"
+              autoComplete="FirstName"
+            />
+          </Grid>
+          <Grid item xs={12} className="form-group">
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              id="Lastname"
+              label="Last name"
+              name="Lastname"
+              autoComplete="Lastname"
+            />
+          </Grid>
           <Grid item xs={12} className="form-group">
             <TextField
               variant="outlined"
@@ -26,7 +48,6 @@ const Login = () => {
               autoComplete="Username"
             />
           </Grid>
-
           <Grid item xs={12} className="form-group">
             <TextField
               variant="outlined"
@@ -47,15 +68,14 @@ const Login = () => {
               color="primary"
               variant="contained"
               component={Link}
-              to="/Admin"
+              to="/"
             >
-              Submit
+              Sign Up
             </Button>
           </Grid>
-
           <Grid item xs={12} className="form-group">
             <p className="forgot-password text-right">
-              Forgot <a href="/Register">password?</a>
+              Already registered <a href="/Login">sign in?</a>
             </p>
           </Grid>
         </Grid>
@@ -63,5 +83,4 @@ const Login = () => {
     </Dialog>
   );
 };
-
-export default Login;
+export default Register;

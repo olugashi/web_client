@@ -10,10 +10,8 @@ import Divider from "@material-ui/core/Divider";
 import PeopleIcon from "@material-ui/icons/People";
 import IconDashboard from "@material-ui/icons/Dashboard";
 import MailIcon from "@material-ui/icons/Mail";
-
-import Users from "./UsersPage";
-import Dashboard from "./DashboardPage";
-
+import Users from "./Users";
+import Dashboard from "./Dashboard";
 
 const drawerWidth = 240;
 
@@ -41,7 +39,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Admin = () => {
+const AdminPage = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -80,7 +78,7 @@ const Admin = () => {
         </Drawer>
 
         <Switch>
-          <Route path="/Admin/Dashboard" component={Dashboard} />
+          <Route exact path="/Admin/Dashboard" component={Dashboard} />
           <Route path="/Admin/Users" component={Users} />
         </Switch>
       </Fragment>
@@ -88,4 +86,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default AdminPage;
