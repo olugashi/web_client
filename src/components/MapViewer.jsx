@@ -2,10 +2,11 @@ import React, { Component } from "react";
 
 //import { Viewer, Entity } from "resium";
 import "cesium/Source/Widgets/widgets.css";
-import { Viewer, WebMapServiceImageryProvider } from "cesium";
+import { Viewer, WebMapServiceImageryProvider, CesiumWidget } from "cesium";
 
 import * as Cesium from "cesium";
-import "../logic/DrawHelper.css"
+import "../logic/DrawHelper.css";
+import '../logic/moreStyle.css';
 import DrawHelper from "../logic/DrawHelper"
 
 export default class MapViewer extends Component {
@@ -30,7 +31,7 @@ export default class MapViewer extends Component {
       }
     });
 
-    this.viewer = new Viewer(this.cesiumContaner, {
+    var viewer = new Viewer(this.cesiumContaner, {
       //imageryProvider: layer,
       //baseLayerPicker: false,
       geocoder: false,
@@ -42,7 +43,7 @@ export default class MapViewer extends Component {
     });
 
 
-    var drawHelper = new DrawHelper(this.viewer);
+    var drawHelper = new DrawHelper(viewer);
     var toolbar = drawHelper.addToolbar(document.getElementById("toolbar"), {
       buttons: ['marker', 'polyline', 'polygon', 'circle', 'extent']
     });

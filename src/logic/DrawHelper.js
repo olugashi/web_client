@@ -2076,3 +2076,5 @@ var DrawHelper = (function() {
 
   return _;
 })();
+
+export default DrawHelper;
