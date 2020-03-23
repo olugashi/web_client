@@ -80,6 +80,7 @@ module.exports = (env, args) => {
           from: path.join(cesiumSource, "Widgets"),
           to: "Widgets",
         },
+        { from: "src/logic/img", to: "img" }
       ]),
       new HtmlPlugin({
         template: "index.html",
