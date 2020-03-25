@@ -9,7 +9,7 @@ class MapManager {
   constructor() {
     this._Viewer;
     this._drawHelper;
-    this._seene;
+    this._scene;
     this.ellipsoid;
     this._homeLocation;
     this._contaner;
@@ -38,13 +38,30 @@ class MapManager {
     });
 
     this._drawHelper = new DrawHelper(this._Viewer);
+    this._scene = this._Viewer.scene;
+  }
 
-    var toolbar = this._drawHelper.addToolbar(
-      document.getElementById("toolbar"),
-      {
-        buttons: ["marker", "polyline", "polygon", "circle", "extent"]
+  startDrawPolyline(option) {
+    return new Promise((resolve, reject) => {
+      const self = this;
+
+      function callbackFinishDraw(positions) {
+        if (positions) resolve(positions);
+        else reject();
       }
-    );
+
+      this._drawHelper.startDrawingPolyline({ callback: callbackFinishDraw });
+    });
+  }
+
+  createDrawPolyline(option = {}) {
+    var polyline = new DrawHelper.PolylinePrimitive({
+      positions: option.positions,
+      width: 10,
+      geodesic: true
+    });
+    this._scene.primitives.add(polyline);
+    polyline.setEditable();
   }
 
   getContaner() {
@@ -52,6 +69,17 @@ class MapManager {
   }
   getDrawHelper() {
     return this._drawHelper;
+  }
+
+  addImageryProvider(imageryProvider) {
+    const _imageryProvider = this._scene.imageryLayers.addImageryProvider(
+      imageryProvider
+    );
+    return _imageryProvider;
+  }
+
+  removeImageryProvider(imageryProvider) {
+    this._scene.imageryLayers.removeImageryProvider(imageryProvider);
   }
 }
 
