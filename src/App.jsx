@@ -14,14 +14,14 @@ function App() {
       <Header />
 
       <Footer />
-      <div>
-        <Switch>
-          <Route exact path="/" component={ApplicationPage} />
-          <Route path="/Admin" component={AdminPage} />
-          <Route path="/Login" component={Login} />
-          <Route path="/Register" component={Register} />
-        </Switch>
-      </div>
+
+      <Switch>
+        <Route exact path="/" component={ApplicationPage} />
+        <Route path="/Admin" component={AdminPage} />
+        <Route path="/Login" component={Login} />
+        <Route path="/Register" component={Register} />
+      </Switch>
+
     </div>
   );
 }
